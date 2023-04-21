@@ -5,13 +5,21 @@ import java.util.Arrays;
 public class StatsService {
 
     public int amountSales(long[] sales) {
-        long sum = Arrays.stream(sales).sum();
-        return (int) sum;
+        int sum = 0;
+        for (int i = 0; i < sales.length; i++) {
+            sum += sales[i];
+        }
+        return sum;
     }
 
     public int averageSales(long[] sales) {
-        long sum = Arrays.stream(sales).sum() / sales.length;
-        return (int) sum;
+        int sum = 0;
+        for (long sale : sales) {
+            sum += sale;
+        }
+        int average = sum / sales.length;
+        return average;
+
     }
 
     public int minSales(long[] sales) {
@@ -39,9 +47,14 @@ public class StatsService {
     public int qtyMonthBelowAverage(long[] sales) {
 
         long monthBelowAverage = 0;
+        int sum = 0;
+        for (long sale : sales) {
+            sum += sale;
+        }
+        int average = sum / sales.length;
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < averageSales(sales)) {
+            if (sales[i] < average) {
                 monthBelowAverage++;
             }
         }
@@ -51,9 +64,14 @@ public class StatsService {
     public int qtyMonthAboveAverage(long[] sales) {
 
         long monthAboveAverage = 0;
+        int sum = 0;
+        for (long sale : sales) {
+            sum += sale;
+        }
+        int average = sum / sales.length;
 
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > averageSales(sales)) {
+            if (sales[i] > average) {
                 monthAboveAverage++;
             }
         }
